@@ -24,6 +24,32 @@ function init_data_list() {
     echo json_encode($data);
 }
 
+function del_row() {
+    $dataid = $_POST['dataid'];
+    $sql = "DELETE FROM `et_data` WHERE `id` = " . $dataid;
+    if (query_sql($sql)) {
+        echo 'ok';
+    } else {
+        echo 'db error ...';
+    }
+}
+
+function add_row() {
+    $sql = "INSERT INTO `et_data` (`c_a`,`c_b`,`c_c`,`c_d`,`c_e`,`c_f`,`c_g`,`c_h`) VALUES( ";
+    for ($i = 0; $i < 8; $i++) {
+        $sql .= '\'' . $_POST['col_' . $i] . '\', ';
+        
+    }
+    $sql = trim($sql, ', ');
+    $sql .= ")";
+    
+    if (query_sql($sql)) {
+        echo 'ok';
+    } else {
+        echo 'db error ...';
+    }
+}
+
 // 连接数据库
 function query_sql(){
 	$mysqli = new mysqli("127.0.0.1", "root", "", "etable");
