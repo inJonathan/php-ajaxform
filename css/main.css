@@ -32,7 +32,15 @@ input.txtField{
 	height:30px;
 }
 
+#addBtn {
+    width: 100%;
+}
+
 .optLink{
+    float: left;
+    width: 50%;
+    padding: 8px 0;
+    text-align: center;
 	text-decoration:none;	
 	color:#f46948;
 }

@@ -16,7 +16,7 @@ switch($action) {
 }
 
 function init_data_list() {
-    $sql = "SELECT * FROM `et_data`";
+    $sql = "SELECT * FROM `a_data`";
     $query = query_sql($sql);
     while ($row = $query -> fetch_assoc()) {
         $data[] = $row;
@@ -26,7 +26,7 @@ function init_data_list() {
 
 function del_row() {
     $dataid = $_POST['dataid'];
-    $sql = "DELETE FROM `et_data` WHERE `id` = " . $dataid;
+    $sql = "DELETE FROM `a_data` WHERE `id` = " . $dataid;
     if (query_sql($sql)) {
         echo 'ok';
     } else {
@@ -35,7 +35,7 @@ function del_row() {
 }
 
 function add_row() {
-    $sql = "INSERT INTO `et_data` (`c_a`,`c_b`,`c_c`,`c_d`,`c_e`,`c_f`,`c_g`,`c_h`) VALUES( ";
+    $sql = "INSERT INTO `a_data` (`c_a`,`c_b`,`c_c`,`c_d`,`c_e`,`c_f`,`c_g`,`c_h`) VALUES( ";
     for ($i = 0; $i < 8; $i++) {
         $sql .= '\'' . $_POST['col_' . $i] . '\', ';
 
@@ -52,7 +52,7 @@ function add_row() {
 }
 
 function edit_row() {
-    $sql = 'UPDATE `et_data` SET';
+    $sql = 'UPDATE `a_data` SET';
     $id = $_POST['id'];
     unset($_POST['id']);
     // 释放变量
@@ -72,7 +72,7 @@ function edit_row() {
 
 // 连接数据库
 function query_sql() {
-    $mysqli = new mysqli("127.0.0.1", "root", "", "etable");
+    $mysqli = new mysqli("127.0.0.1", "root", "", "ajaxform");
     $sqls = func_get_args();
     foreach ($sqls as $s) {
         $query = $mysqli -> query($s);
