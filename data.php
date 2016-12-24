@@ -54,19 +54,19 @@ function add_row() {
 function edit_row() {
     $sql = 'UPDATE `a_data` SET';
     $id = $_POST['id'];
-    unset($_POST['id']);
     // 释放变量
+    unset($_POST['id']);
     for ($i = 0; $i < 8; $i++) {
         $sql .= '`c_' . chr(97 + $i) . '` = \'' . $_POST['col_' . $i] . '\' ,';
 
     }
     $sql = trim($sql, ', ');
     $sql .= ' WHERE `id` = ' . $id;
-    
+
     if(query_sql($sql)){
-        echo "ok";  
+        echo "ok";
     } else {
-        echo "db error ...";    
+        echo "db error ...";
     }
 }
 
